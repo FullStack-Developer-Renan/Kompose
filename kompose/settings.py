@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure--%^o^f1ju^5(&48b%3whbs@pzh1*uk@8m7t!k5_+yi@b!uncx2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["kompose-renan.herokuapp.com"]
+ALLOWED_HOSTS = ["kompose-renan.herokuapp.com", "localhost"]
 
 
 # Application definition
