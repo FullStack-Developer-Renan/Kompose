@@ -124,6 +124,8 @@ POSTGRES_DB=songs
 **Código com erro:** kompose/settings.py
 
 ```sh
+ALLOWED_HOSTS = []
+...
 if os.getenv("TEST"):
     DATABASES = {
         "default": {
@@ -146,13 +148,15 @@ else:
 
 ```
 
-**Erro:** Databases escritos de maneira incorreta / Ponte do banco postgresql da app com o banco do heroku não realizada
-**O que ele causa:** Erros de execução do código / Banco postgresql do heroku não será criado gerando um erro na api
+**Erro:** Permissões para acessar a api não foram fornecidas / Databases escritos de maneira incorreta / Ponte do banco postgresql da app com o banco do heroku não realizada
+**O que ele causa:** Acessar a api do heroku ou até mesmo do localhost não será possível / Erros de execução do código / Banco postgresql do heroku não será criado gerando um erro na api
 **Como corrigir:** Mudar o código / Gerar a ponte do banco da app com o do heroku
 **Código corrigido:**
 
 ```sh
 import dj_database_url
+...
+ALLOWED_HOSTS = ["kompose-renan.herokuapp.com", "localhost"]
 ...
 if os.getenv("TEST"):
     DATABASES = {
@@ -174,7 +178,6 @@ else:
         }
     }
 ...
-
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 if DATABASE_URL:
